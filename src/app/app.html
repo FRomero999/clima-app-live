@@ -1,5 +1,15 @@
-<h1 class="text-center text-primary bg-amber-400 p-4 rounded-md">Clima App Live</h1>
-<hr>
-<p>Este es un proyecto de clima app live</p>
+<app-header [title]="title()"></app-header>
 
 <router-outlet />
+
+<h1 class="text-2xl text-center mt-5">Listado de ciudades</h1>
+
+<div class="flex flex-row flex-wrap justify-center gap-10 p-5">
+    @for (city of cities(); track city.id) {
+        <app-city-card [city]="city"></app-city-card>
+    }
+    @empty {
+        <p>No hay ciudades que mostrar</p>
+    }
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,8 @@
+<div class="flex flex-row flex-wrap justify-center gap-10 p-5">
+    @for (city of cities(); track city.id) {
+        <app-city-card [city]="city"></app-city-card>
+    }
+    @empty {
+        <p>No hay ciudades que mostrar</p>
+    }
+</div>

@@ -7,16 +7,18 @@ const mockCities: City[] = [
   { id: '3', name: 'Valencia', country: 'ES', description: 'Ciudad del mar', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Valencia,_Ciudad_de_las_Ciencias_y_de_las_Artes.jpg', savedAt: new Date(), favorite: false },
 ];
 
-
+// Un único servicio compartido en toda la app (no hace falta declararlo en providers).
 @Injectable({
   providedIn: 'root',
 })
 
 export class CityService {
 
+  // Fuente de verdad reactiva: si cambia, los componentes que leen cities() se actualizan solos.
   readonly cities = signal<City[]>(mockCities);
 
   addCity(city: City) {
+    // update() recibe el valor actual y debe devolver un array NUEVO (inmutabilidad).
     this.cities.update(cities => [...cities, city]);
   }
 
@@ -29,6 +31,7 @@ export class CityService {
   }
 
   getCity(id: string) {
+    // cities() lee el valor actual del signal (no es un array “vivo”, es una foto en este instante).
     return this.cities().find(city => city.id === id);
   }
   

@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
+// Componente de presentación: no tiene estado ni lógica, solo pinta el pie.
 export class Footer {}

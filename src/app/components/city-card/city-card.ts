@@ -9,6 +9,6 @@ import { City } from '../../models/city';
 })
 
 export class CityCard {
+  // Input obligatorio: el padre debe pasar [city]="...". En plantilla se lee con city().
   city = input.required<City>();
-
 }

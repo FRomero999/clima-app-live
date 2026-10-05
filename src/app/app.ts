@@ -2,12 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
-import { CityList } from './components/city-list/city-list';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, CityList],
+  // RouterOutlet pinta la ruta activa; Header y Footer se quedan fijos alrededor.
+  imports: [RouterOutlet, Header, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

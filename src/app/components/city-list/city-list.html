@@ -1,7 +1,9 @@
 <div class="flex flex-row flex-wrap justify-center gap-10 p-5">
     <!-- cities() lee el signal. track city.id evita recrear tarjetas si el array cambia. -->
     @for (city of cities(); track city.id) {
-        <app-city-card [city]="city"></app-city-card>
+        <a [routerLink]="['/ciudad',city.id]">
+            <app-city-card [city]="city"></app-city-card>
+        </a>
     }
     @empty {
         <p>No hay ciudades que mostrar</p>

@@ -1,4 +1,9 @@
 <div class= "bg-amber-400 shadow-md w-full p-5 flex flex-row items-center  gap-10 ">
     <h1 class="w-4xs text-2xl">{{title()}}</h1>
     <p>Este es un proyecto para aprender Angular</p>    
+    <!-- Enlaces de navegación: routerLink cambia de ruta sin recargar. -->
+    <nav class="flex gap-4 ml-auto">
+        <a routerLink="/" class="hover:underline">Inicio</a>
+        <a routerLink="/acerca-de" class="hover:underline">Acerca de...</a>
+    </nav>
 </div>

@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CityCard } from '../city-card/city-card';
 import { CityService } from '../../service/city-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-city-list',
-  imports: [CityCard],
+  imports: [CityCard, RouterLink],
   templateUrl: './city-list.html',
   styleUrl: './city-list.css',
 })

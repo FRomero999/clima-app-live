@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
 import { City } from '../../models/city';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-city-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './city-card.html',
   styleUrl: './city-card.css',
 })

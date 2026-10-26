@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { City } from '../models/city';
+import { CityInput } from '../models/cityInput';
 
 const mockCities: City[] = [
   { id: '1', name: 'Madrid', country: 'ES',  description: 'La capital', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Madrid_-_Plaza_Mayor_2012.jpg', savedAt: new Date(), favorite: true },
@@ -22,6 +23,18 @@ export class CityService {
     this.cities.update(cities => [...cities, city]);
   }
 
+  addCityInput(city: CityInput) {
+    const newCity: City = {
+      ...city,
+      id: crypto.randomUUID(),
+      savedAt: new Date(),
+      favorite: false,
+    };
+    
+    this.cities.update(cities => [...cities, newCity]);
+    return newCity;
+  }
+  
   removeCity(id: string) {
     this.cities.update(cities => cities.filter(city => city.id !== id));
   }

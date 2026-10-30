@@ -1,0 +1,73 @@
+<!-- FormRoot añade novalidate y ejecuta la acción configurada al enviar el formulario. -->
+<form [formRoot]="cityForm" class="space-y-4">
+  <div>
+    <label for="name" class="block font-semibold">Ciudad</label>
+    <input
+      id="name"
+      type="text"
+      placeholder="Madrid"
+      autocomplete="address-level2"
+      class="w-full border rounded px-3 py-2"
+      [formField]="cityForm.name"
+    />
+    <!-- Los errores solo se muestran cuando el usuario ya ha tocado el campo. -->
+    @if (cityForm.name().touched() && cityForm.name().invalid()) {
+      <ul class="text-sm text-red-500">
+        @for (error of cityForm.name().errors(); track error) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div>
+    <label for="country" class="block font-semibold">País</label>
+    <input
+      id="country"
+      type="text"
+      placeholder="España"
+      autocomplete="country-name"
+      class="w-full border rounded px-3 py-2"
+      [formField]="cityForm.country"
+    />
+    @if (cityForm.country().touched() && cityForm.country().invalid()) {
+      <ul class="text-sm text-red-500">
+        @for (error of cityForm.country().errors(); track error) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div>
+    <label for="description" class="block font-semibold">Descripción</label>
+    <textarea
+      id="description"
+      rows="3"
+      placeholder="Una ciudad con mucho viento…"
+      class="w-full border rounded px-3 py-2"
+      [formField]="cityForm.description"
+    ></textarea>
+  </div>
+
+  <div>
+    <label for="image" class="block font-semibold">URL de la imagen</label>
+    <input
+      id="image"
+      type="url"
+      placeholder="https://…"
+      class="w-full border rounded px-3 py-2"
+      [formField]="cityForm.image"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50"
+    [disabled]="cityForm().invalid()"
+  >
+    Guardar
+  </button>
+</form>
+
+<p class="mt-4 text-sm text-gray-600">Vista previa: {{ city().name }} · {{ city().country }}</p>
